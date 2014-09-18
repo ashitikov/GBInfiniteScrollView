@@ -163,6 +163,11 @@ typedef NS_ENUM(NSInteger, GBScrollDirection) {
 - (void)updateData;
 
 /**
+ *  Layout pages in next layoutSubViews call
+ */
+- (void)setNeedsLayoutPages;
+
+/**
  * Resets the infinite scroll view layout.
  */
 - (void)resetLayout;

@@ -63,6 +63,11 @@ CGFloat const GBInfiniteScrollViewPageMargin = 16.0f;
     }
 }
 
+- (void)forceLayout
+{
+    
+}
+
 #pragma mark - Setup
 
 - (void)setup

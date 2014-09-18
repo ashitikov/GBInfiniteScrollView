@@ -68,4 +68,9 @@ typedef NS_ENUM(NSInteger, GBInfiniteScrollViewPageStyle) {
  */
 - (void)prepareForReuse;
 
+/**
+ *  Layout page as it requires immediately
+ */
+- (void)forceLayout;
+
 @end

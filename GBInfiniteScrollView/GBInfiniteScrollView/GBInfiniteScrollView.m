@@ -12,6 +12,8 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
 
 @interface GBInfiniteScrollView ()  <UIGestureRecognizerDelegate>
 
+@property (nonatomic) BOOL needsLayoutPages;
+
 /**
  *  Number of pages.
  */
@@ -884,6 +886,22 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
     [self resetLayout];
 }
 
+- (void)updatePagesLayout
+{
+    for (GBInfiniteScrollViewPage *page in self.visiblePages)
+        [page forceLayout];
+    
+    [self resetVisiblePages];
+    [self resetReusablePages];
+    
+    [self resetLayout];
+}
+
+- (void)setNeedLayoutPages
+{
+    self.needLayoutPages = YES;
+}
+
 - (void)resetLayout
 {
     [self layoutCurrentView];
@@ -1025,6 +1043,13 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
     }
     
     [super layoutSubviews];
+    
+    if (self.needLayoutPages)
+    {
+        self.needLayoutPages = NO;
+        
+        [self updatePagesLayout];
+    }
     
     if ((self.scrollDirection == GBScrollDirectionHorizontal && self.pageSize.width  != self.frame.size.width) ||
         (self.scrollDirection == GBScrollDirectionVertical   && self.pageSize.height != self.frame.size.height)) {
