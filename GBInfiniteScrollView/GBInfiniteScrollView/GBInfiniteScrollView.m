@@ -884,6 +884,8 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
     
     [self shouldScroll];
     [self resetLayout];
+    
+    [self setNeedsLayoutPages];
 }
 
 - (void)updatePagesLayout
