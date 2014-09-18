@@ -14,10 +14,10 @@ typedef NS_ENUM(NSInteger, GBInfiniteScrollViewPageStyle) {
     GBInfiniteScrollViewPageStyleCustom, /**<
                                           * Page Style custom.
                                           */
-    GBInfiniteScrollViewPageStyleText, /**< 
+    GBInfiniteScrollViewPageStyleText, /**<
                                         * Page Style Text
                                         */
-    GBInfiniteScrollViewPageStyleImage /**< 
+    GBInfiniteScrollViewPageStyleImage /**<
                                         * Page Style Image
                                         */
 };
@@ -25,12 +25,12 @@ typedef NS_ENUM(NSInteger, GBInfiniteScrollViewPageStyle) {
 @interface GBInfiniteScrollViewPage : UIView
 
 /**
-*  Initializes and returns a newly allocated view object with the specified page style.
-*
-*  @param style GBInfiniteScrollViewPageStyle type
-*
-*  @return An initialized view object or nil if the object couldn't be created.
-*/
+ *  Initializes and returns a newly allocated view object with the specified page style.
+ *
+ *  @param style GBInfiniteScrollViewPageStyle type
+ *
+ *  @return An initialized view object or nil if the object couldn't be created.
+ */
 - (id)initWithStyle:(GBInfiniteScrollViewPageStyle)style;
 
 /**

@@ -304,7 +304,7 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
 - (NSUInteger)numberOfPagesOnTheRightBetweenFirstIndex:(NSUInteger)firstIndex andSecondIndex:(NSUInteger)secondIndex
 {
     NSUInteger numberOfPages = 0;
-
+    
     if (firstIndex < secondIndex) {
         numberOfPages = secondIndex - firstIndex - 1;
     } else if (firstIndex > secondIndex) {
@@ -350,7 +350,7 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
     if (self.needsUpdatePageIndex) {
         self.currentPageIndex = self.newPageIndex;
         self.needsUpdatePageIndex = NO;
-    
+        
         [self resetVisiblePages];
         [self resetLayout];
     }
@@ -454,7 +454,7 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
     if (self.isDebugModeOn) {
         NSLog(@"GBInfiniteScrollView: Next: %lu", (unsigned long)[self nextPageIndex]);
     }
-
+    
     self.currentPageIndex = [self nextPageIndex];
 }
 
@@ -490,7 +490,7 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
     } else {
         page = [self.visiblePages objectAtIndex:visibleIndex];
     }
-
+    
     return page;
 }
 
@@ -608,7 +608,7 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
     }
     
     if (self.isDebugModeOn) {
-       NSLog(@"GBInfiniteScrollView: Adding previous visible page: %lu", (unsigned long)[self previousVisiblePageIndex]);
+        NSLog(@"GBInfiniteScrollView: Adding previous visible page: %lu", (unsigned long)[self previousVisiblePageIndex]);
     }
     
     [self addFirstVisiblePage:page atIndex:[self previousVisiblePageIndex]];
@@ -627,7 +627,7 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
         [self.visiblePages addObject:page];
         
         if (self.isDebugModeOn) {
-           NSLog(@"GBInfiniteScrollView: Visible indices: %@", [self visibleIndicesDescription]);
+            NSLog(@"GBInfiniteScrollView: Visible indices: %@", [self visibleIndicesDescription]);
         }
     }
 }
@@ -645,7 +645,7 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
         [self.visiblePages insertObject:page atIndex:0.0f];
         
         if (self.isDebugModeOn) {
-           NSLog(@"GBInfiniteScrollView: Visible indices: %@", [self visibleIndicesDescription]);
+            NSLog(@"GBInfiniteScrollView: Visible indices: %@", [self visibleIndicesDescription]);
         }
     }
 }
@@ -657,7 +657,7 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
     }
     
     if (self.isDebugModeOn) {
-       NSLog(@"GBInfiniteScrollView: Removing first visible page.");
+        NSLog(@"GBInfiniteScrollView: Removing first visible page.");
     }
     
     GBInfiniteScrollViewPage *firstVisiblePage = [self firstVisiblePage];
@@ -667,7 +667,7 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
     [self.visiblePages removeObjectAtIndex:0];
     
     if (self.isDebugModeOn) {
-       NSLog(@"GBInfiniteScrollView: Visible indices: %@", [self visibleIndicesDescription]);
+        NSLog(@"GBInfiniteScrollView: Visible indices: %@", [self visibleIndicesDescription]);
     }
 }
 
@@ -678,7 +678,7 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
     }
     
     if (self.isDebugModeOn) {
-       NSLog(@"GBInfiniteScrollView: Removing last visible page.");
+        NSLog(@"GBInfiniteScrollView: Removing last visible page.");
     }
     
     GBInfiniteScrollViewPage *lastVisiblePage = [self lastVisiblePage];
@@ -688,7 +688,7 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
     [self.visiblePages removeLastObject];
     
     if (self.isDebugModeOn) {
-       NSLog(@"GBInfiniteScrollView: Visible indices: %@", [self visibleIndicesDescription]);
+        NSLog(@"GBInfiniteScrollView: Visible indices: %@", [self visibleIndicesDescription]);
     }
 }
 
@@ -897,9 +897,9 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
     [self resetLayout];
 }
 
-- (void)setNeedLayoutPages
+- (void)setNeedsLayoutPages
 {
-    self.needLayoutPages = YES;
+    self.needsLayoutPages = YES;
 }
 
 - (void)resetLayout
@@ -927,7 +927,7 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
     
     if (currentpage) {
         if (self.isDebugModeOn) {
-           NSLog(@"GBInfiniteScrollView: Reseting visible pages: %@", [self visibleIndicesDescription]);
+            NSLog(@"GBInfiniteScrollView: Reseting visible pages: %@", [self visibleIndicesDescription]);
         }
         
         [self.visibleIndices enumerateObjectsUsingBlock:^(NSNumber *visibleIndex, NSUInteger idx, BOOL *stop) {
@@ -948,7 +948,7 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
         [self.visiblePages addObject:currentpage];
         
         if (self.isDebugModeOn) {
-           NSLog(@"GBInfiniteScrollView: Visible pages reseted: %@", [self visibleIndicesDescription]);
+            NSLog(@"GBInfiniteScrollView: Visible pages reseted: %@", [self visibleIndicesDescription]);
         }
     }
 }
@@ -1044,9 +1044,9 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
     
     [super layoutSubviews];
     
-    if (self.needLayoutPages)
+    if (self.needsLayoutPages)
     {
-        self.needLayoutPages = NO;
+        self.needsLayoutPages = NO;
         
         [self updatePagesLayout];
     }
@@ -1232,7 +1232,7 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
         if ([self firstVisiblePageIndex] != [self currentPageIndex]) {
             [self removeFirstVisiblePage];
         }
-
+        
         if (![self isLastPage] || self.shouldScrollingWrapDataSource) {
             [self placePage:[self nextPage] onRight:rightEdge];
         }
@@ -1245,7 +1245,7 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
         if ([self currentPageIndex] != [self lastVisiblePageIndex]) {
             [self removeLastVisiblePage];
         }
-
+        
         if (![self isFirstPage] || self.shouldScrollingWrapDataSource) {
             [self placePage:[self previousPage] onLeft:leftEdge];
         }

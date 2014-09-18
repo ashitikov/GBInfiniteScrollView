@@ -30,28 +30,28 @@
 
 typedef NS_ENUM(NSInteger, GBAutoScrollDirection) {
     GBAutoScrollDirectionRightToLeft,   /**<
-                                        * Automatic scrolling from right to left.
-                                        * @warning Default
-                                        */
+                                         * Automatic scrolling from right to left.
+                                         * @warning Default
+                                         */
     GBAutoScrollDirectionLeftToRight,   /**<
-                                        * Automatic scrolling from left to right.
-                                        */
+                                         * Automatic scrolling from left to right.
+                                         */
     GBAutoScrollDirectionTopToBottom,   /**<
-                                        * Automatic scrolling from top to bottom.
-                                        */
+                                         * Automatic scrolling from top to bottom.
+                                         */
     GBAutoScrollDirectionBottomToTop    /**<
-                                        * Automatic scrolling from bottom to top.
-                                        */
+                                         * Automatic scrolling from bottom to top.
+                                         */
 };
 
 typedef NS_ENUM(NSInteger, GBScrollDirection) {
     GBScrollDirectionHorizontal,        /**<
-                                        * Horizontal scroll direction.
-                                        * @warning Default
-                                        */
+                                         * Horizontal scroll direction.
+                                         * @warning Default
+                                         */
     GBScrollDirectionVertical           /**<
-                                        * Vertical scroll direction.
-                                        */
+                                         * Vertical scroll direction.
+                                         */
 };
 
 @protocol GBInfiniteScrollViewDelegate;
@@ -75,7 +75,7 @@ typedef NS_ENUM(NSInteger, GBScrollDirection) {
  */
 @interface GBInfiniteScrollView : UIScrollView <UIScrollViewDelegate>
 
-/** 
+/**
  * The data source of the Infinite-scroll-view object.
  */
 @property (nonatomic, assign) id <GBInfiniteScrollViewDataSource> infiniteScrollViewDataSource;
@@ -100,7 +100,7 @@ typedef NS_ENUM(NSInteger, GBScrollDirection) {
  */
 - (id)initWithCoder:(NSCoder *)aDecoder;
 
-/** 
+/**
  * The time interval of the automatic scrolling.
  */
 @property (nonatomic) CGFloat interval;
@@ -110,22 +110,22 @@ typedef NS_ENUM(NSInteger, GBScrollDirection) {
  */
 @property (nonatomic) GBScrollDirection scrollDirection;
 
-/** 
+/**
  * The direction of automatic scrolling, right to left (default) or left to right.
  */
 @property (nonatomic) GBAutoScrollDirection autoScrollDirection;
 
-/** 
+/**
  * The initial page index.
  */
 @property (nonatomic) NSUInteger pageIndex;
 
-/** 
+/**
  * The current page index.
  */
 @property (nonatomic, readonly) NSUInteger currentPageIndex;
 
-/** 
+/**
  * A Boolean value that controls if it should scrolling wrap the data source's ends.
  */
 @property (nonatomic) BOOL shouldScrollingWrapDataSource;
@@ -157,7 +157,7 @@ typedef NS_ENUM(NSInteger, GBScrollDirection) {
  */
 - (void)reloadData;
 
-/** 
+/**
  * Updates current page's data source.
  */
 - (void)updateData;
@@ -172,12 +172,12 @@ typedef NS_ENUM(NSInteger, GBScrollDirection) {
  */
 - (void)resetLayout;
 
-/** 
+/**
  * Stops automatic scrolling.
  */
 - (void)stopAutoScroll;
 
-/** 
+/**
  * Starts automatic scrolling.
  */
 - (void)startAutoScroll;
@@ -234,7 +234,7 @@ typedef NS_ENUM(NSInteger, GBScrollDirection) {
 @end
 
 /**
- * @protocol GBInfiniteScrollViewDelegate 
+ * @protocol GBInfiniteScrollViewDelegate
  *
  * This protocol allows the adopting delegate to respond to scrolling operations.
  */

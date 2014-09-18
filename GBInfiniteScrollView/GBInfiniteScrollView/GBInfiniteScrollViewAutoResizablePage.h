@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Gerardo Blanco García. All rights reserved.
 //
 
-#import "GBInfiniteScrollViewPage"
+#import "GBInfiniteScrollViewPage.h"
 
 @interface GBInfiniteScrollViewAutoResizablePage : GBInfiniteScrollViewPage
 

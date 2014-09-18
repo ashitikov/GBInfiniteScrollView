@@ -14,14 +14,23 @@
 {
     [super forceLayout];
     
-    CGSize superSize = self.superview.size;
+    CGSize superSize = self.superview.frame.size;
     
-    self.size = superSize;
+    [self updateView:self withSize:superSize];
     
-    self.contentView.size = superSize;
+    [self updateView:self.contentView withSize:superSize];
     
     for (UIView *subview in self.contentView.subviews)
-        subview.size = superSize;
+        [self updateView:subview withSize:superSize];
+}
+
+- (void)updateView:(UIView *)view withSize:(CGSize)size
+{
+    CGRect currentFrame = view.frame;
+    
+    currentFrame.size = size;
+    
+    view.frame = currentFrame;
 }
 
 @end
