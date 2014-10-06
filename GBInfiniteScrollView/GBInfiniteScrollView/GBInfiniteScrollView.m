@@ -143,6 +143,21 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
     return _reusablePages;
 }
 
+- (void)setTapEnabled:(BOOL)tapEnabled
+{
+    if (_tapEnabled == NO)
+    {
+        self.exclusiveTouch = YES;
+        
+        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                  action:@selector(tapOnScrollView)];
+        
+        [self addGestureRecognizer:gesture];
+    }
+    
+    _tapEnabled = tapEnabled;
+}
+
 #pragma mark - SetUp
 
 - (void)setUp
@@ -1421,6 +1436,7 @@ static CGFloat const GBAutoScrollDefaultInterval = 3.0f;
         if (animated) {
             [self shouldScroll];
             [self resetLayout];
+            [self updatePagesLayout];
             
             long numberOfPagesOnTheRight = [self numberOfPagesOnTheRightBetweenFirstIndex:self.currentPageIndex
                                                                            andSecondIndex:index];
